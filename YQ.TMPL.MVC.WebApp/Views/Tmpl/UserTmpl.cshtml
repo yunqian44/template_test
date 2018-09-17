@@ -1,0 +1,186 @@
+﻿    <div class="col-sm-12" style="height:40px;line-height:40px;background-color:#F5F5F5;">
+        <span class="col-sm-offset-1"><b>身份证信息</b></span>
+    </div>
+    <div class="col-sm-12">
+        <div class="modal-context">
+            <div class="col-sm-6">
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-4" style="text-align:right;">
+                        姓名：
+                    </div>
+                    <div>
+                        {{Name}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-4" style="text-align:right;">
+                        性别：
+                    </div>
+                    <div>
+                        {{Gender}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-4" style="text-align:right;">
+                        民族：
+                    </div>
+                    <div>
+                        {{Nation}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <img src="{{Image}}" alt="人员照片" style="width:62px;height:80px;border:1px solid gray">
+            </div>
+            <div class="col-sm-12">
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-3" style="text-align:right;">
+                        身份证号：
+                    </div>
+                    <div>
+                        {{IdCard}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-3" style="text-align:right;">
+                        住址：
+                    </div>
+                    <div>
+                        {{Address}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12" style="height:40px;line-height:40px;background-color:#F5F5F5;">
+        <span class="col-sm-offset-1"><b>基本信息</b></span>
+    </div>
+    <div class="col-sm-12">
+        <div class="modal-context">
+            <div class="col-sm-6">
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        人员状态：
+                    </div>
+                    <div>
+                        {{if Status==1}}
+                        可用
+                        {{else}}
+                        不可用
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        紧急联系人：
+                    </div>
+                    <div>
+                        {{EmergencyContact}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        单位电话：
+                    </div>
+                    <div>
+                        {{orgTel}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        联系电话：
+                    </div>
+                    <div>
+                        {{Tel}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        紧急联系人电话：
+                    </div>
+                    <div>
+                        {{EmergencyTel}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        年龄：
+                    </div>
+                    <div>
+                        {{Age}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12" style="height:40px;line-height:40px;background-color:#F5F5F5;">
+        <span class="col-sm-offset-1"><b>证件信息</b></span>
+    </div>
+    <div class="col-sm-12">
+        <div class="modal-context">
+            {{each JobInfos as info i }}
+            <div class="col-sm-6">
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        证件名称：
+                    </div>
+                    <div>
+                        {{info.JobTypeCardName}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        证件编号：
+                    </div>
+                    <div>
+                        {{info.JobCardNo}}
+                    </div>
+                </div>
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        证件有效期：
+                    </div>
+                    <div>
+                        {{info.ExpiryDate}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                {{each info.Images as imj j}}
+                <img src="{{imj}}" alt="上传证件照" style="width:102px;height:120px;">
+                {{/each}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="col-sm-12" style="height:40px;line-height:40px;background-color:#F5F5F5;">
+        <span class="col-sm-offset-1"><b>识别信息</b></span>
+    </div>
+    <div class="col-sm-12">
+        <div class="modal-context">
+            <div class="col-sm-6">
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        指纹信息：
+                    </div>
+                    <div>
+                        <span class="btn btn-xs btn-outline btn-warning">无</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row" style="height:32px;line-height:32px;">
+                    <div class="col-sm-6" style="text-align:right;">
+                        录入时间：
+                    </div>
+                    <div>
+                        2017-09-13
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align: center;clear: both;">
+    </div>

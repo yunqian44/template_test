@@ -1,0 +1,194 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Script/jquery.min.js"></script>
+    <script src="~/Script/jquery.validate.min.js"></script>
+    <script src="~/Script/jquery.cookie.js"></script>
+    <script src="~/Script/template.js"></script>
+    <script src="~/Script/common.js"></script>
+    <script src="~/Script/jquery.dataTables.min.js"></script>
+    <script src="~/Script/bootstrap.min.js"></script>
+    <link href="~/Css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        ﻿<div class="setting_content">
+            <div class="header_type">
+
+            </div>
+            <div class="context" style="background-color: #ffffff;">
+                <div class="row">
+                    <div class="col-sm-12" style="padding-right: 0px;">
+                        <div class="col-sm-12">
+                            <div class="bk-gray" style="margin-top: 0px;">
+                                <div class="l padding-l-40">
+                                    <div class="ibox float-e-margins" style="margin-top: 10px;">
+                                        <div class="ibox float-e-margins">
+                                            <table class="table table-striped table-bordered table-hover data-tables-init table_from" id="tableList" style="width:80%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input type="checkbox" class="export_main"></th>
+                                                        <th>姓名</th>
+                                                        <th>性别</th>
+                                                        <th>年纪</th>
+                                                        <th>备注</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- 人员信息查看 -->
+                                    <div class="modal inmodal" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog transfer">
+                                            <div class="modal-content animated bounceInRight">
+                                                <div class="modal-title modal-border-b">
+                                                    <div class="col-sm-3" style="padding-right: 0px;">
+                                                        <p class="modal-title-text" style="text-align: left;">人员信息查看</p>
+                                                    </div>
+                                                    <div class="col-sm-7" style="padding-left: 0px;padding-right: 0px;">
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <div class="modal-close close" data-dismiss="modal">关闭</div>
+                                                    </div>
+                                                </div>
+                                                <div style="max-height:900px;" class="myModal1Detail">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/html" id="userInfoteml">
+        <span class="f-l" style="width:80px;height:96px;vertical-align:middle;margin-right:10px;">
+            <img src="{{Image}}" alt="人员照片" style="width:80px;height:96px;">
+        </span>
+        <ul style="display:inline-block;text-align: left;vertical-align:middle;">
+            <li style="height:32px;line-height:32px;">
+                <span>姓名：{{Name}}</span>
+                <span class="btn btn-xs btn-outline btn-primary" style="margin-left:20px;">
+                    {{if Status==0}}
+                    无效
+                    {{else if Status==1}}
+                    有效
+                    {{/if}}
+                </span>
+            </li>
+            <li style="height:32px;line-height:32px;">
+                性别：
+                {{if Gender==0}}
+                男
+                {{else if Gender==1}}
+                女
+                {{/if}}
+            </li>
+            <li style="height:32px;line-height:32px;">
+                身份证号：{{IdCard}}
+            </li>
+        </ul>
+    </script>
+
+    <script type="text/javascript">
+        var url='@Url.Action("UserTmpl", "Tmpl")';
+
+        $(document).ready(function () {
+            render_datatabl();
+        });
+
+        var render_datatabl = function () {
+            var columns = [
+                       { "data": "Id" },
+                       { "data": "Name" },
+                       { "data": "Gender" },
+                       { "data": "Age" },
+                       { "data": "Remark" },
+                       { "data": "Id" }
+            ];
+
+            var columnDefs = [
+                {
+                    "render": function (data, type, row) {
+                        return '<input type="checkbox" value="" class="export_id" data-id="' + row.Id + '" class="export_id">';
+                    }, "targets": 0, "orderable": false,
+                },
+                {
+                    "render": function (data, type, row) {
+                        return template("userInfoteml", { Image: row.Image, Name: row.Name, Gender: row.Gender, Age: row.Age,Status:row.Status,IdCard:row.IdCard });
+                    }, "targets": 1
+                },
+                {
+                    "render": function (data, type, row) {
+                        if (data == 1)
+                            return '女';
+                        else
+                            return '男';
+
+                    }, "targets": 2
+                },
+                { "render": function (data, type, row) { return data; }, "targets": 3 },
+                { "render": function (data, type, row) { return data; }, "targets": 4 },
+                {
+                    "render": function (data, type, row) {
+                        var html = '<a class="btn btn-detail  btn-sm radius" data-title="查看"  data-toggle="modal" onclick="edit_user_info(\'' + row.Id + '\');">查看</a>';
+                        return html;
+                    }, "targets": 5, "orderable": false,
+                }
+            ];
+
+            var order = [0, 'desc'];
+
+            var params = {
+                _cb_search_field: function (oaData) {
+                    oaData.Query = {};
+                    return oaData;
+                },
+                show_col_checkbox: 0,
+            }
+
+
+            var datatable = yq_datatable.init("#tableList", '/Home/GetUserList', columnDefs, columns, order, {}, params);
+        };
+
+
+        ///编辑或者查看
+        function edit_user_info(id) {
+            yq_common_ctrl.ajax_get("/Home/GetDetail", { id: id }, function (ret, data) {
+                switch (ret['code']) {
+                    case 1:
+                        var model = ret.data;
+                        $.get(url, function (data) {
+                                var render = template.compile(data);
+                                var html = render(model);
+                                $(".myModal1Detail").html("").html(html);
+
+                                $("#myModal1").modal("show");
+                            });
+
+                        //var html = template("../Tmpl/UserTmpl", model);
+                        //$(".myModal1Detail").html(html);
+                       
+                        break;
+                    default:
+                        yq_toastr.error();
+                        break;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
