@@ -76,7 +76,7 @@ namespace YQ.TMPL.MVC.WebApp.Controllers
         } 
         #endregion
 
-        #region 01，获取用户列表+JsonResult GetUserList2()
+        #region 05，获取用户列表+JsonResult GetUserList2()
         /// <summary>
         /// 获取用户列表2
         /// </summary>
@@ -94,6 +94,10 @@ namespace YQ.TMPL.MVC.WebApp.Controllers
         }
         #endregion
 
+        public ActionResult TestPage()
+        {
+            return View();
+        }
 
 
 

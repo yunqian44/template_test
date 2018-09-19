@@ -17,8 +17,10 @@
     <script src="~/Script/bootstrap-datetimepicker.js"></script>
     <script src="~/Script/bootstrap-datetimepicker.fr.js"></script>
     <link href="~/Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Css/style.min.css" rel="stylesheet" />
     <link href="~/Css/common_popup.css" rel="stylesheet" />
     <link href="~/Css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Css/Publish.css" rel="stylesheet" />
 </head>
 <body>
     <div>
@@ -76,6 +78,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="p-wrap-2">
+
     </div>
 
     <script type="text/html" id="userInfoteml">
@@ -777,33 +783,9 @@
     </script>
 
     <script type="text/javascript">
-        $('.form_date').datetimepicker({
-            language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
-        });
         $(document).ready(function () {
             render_datatabl();
-            init();
         });
-
-        var init = function () {
-            $('.form_date').datetimepicker({
-                language: 'fr',
-                weekStart: 1,
-                todayBtn: 1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-                minView: 2,
-                forceParse: 0
-            });
-        }
 
         var render_datatabl = function () {
             var columns = [
@@ -840,7 +822,8 @@
                 {
                     "render": function (data, type, row) {
                         var html = '<a class="btn btn-detail  btn-sm radius" data-title="查看"  data-toggle="modal" onclick="edit_user_info(\'' + row.Id + '\');">查看</a>';
-                        html += '<a class="btn btn-detail  btn-sm radius" data-title="查看"  data-toggle="modal" onclick="edit_user_info1(\'' + row.Id + '\');">查看</a>'
+                        html += '<a class="btn btn-detail  btn-sm radius" data-title="查看"  data-toggle="modal" onclick="edit_user_info1(\'' + row.Id + '\');">查看</a>';
+                        html += '<a class="btn btn-add-ele  btn-sm radius nav nav-1" data-title="查看"  data-toggle="modal">查看</a>';
                         return html;
                     }, "targets": 5, "orderable": false,
                 }
