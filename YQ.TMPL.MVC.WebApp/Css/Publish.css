@@ -1,0 +1,76 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+}
+
+.cover{
+	position:fixed;
+    background-color:#aaa;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+    opacity:0.5;
+    /*毛玻璃*/
+    /*filter: blur(0px);*/
+	z-index:200;
+}
+
+.action-sta {
+    background-color:aqua;
+    width: 100%;
+    position: fixed;
+    display:block;
+    bottom: 0;
+    z-index:2000;
+    -webkit-animation: start 0.5s 1 alternate forwards; /* Safari and Chrome */
+}
+
+.action-end {
+    background-color:aqua;
+    width: 100%;
+    position: fixed;
+    display:block;
+    bottom: 0;
+    z-index:2000;
+    -webkit-animation: end 0.5s 1 alternate forwards; /* Safari and Chrome */
+}
+
+@keyframes start {
+    0% {
+        height: 0px;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+
+@-webkit-keyframes start /* Safari and Chrome */
+{
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 200px;
+        bottom: 0;
+    }
+}
+
+@-webkit-keyframes end /* Safari and Chrome */
+{
+    0% {
+        bottom: 0;
+    }
+    100% {
+        height: 0px;
+    }
+}
+
+@keyframes end {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        height: 0px;
+    }
+}
