@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -122,6 +123,7 @@
     <Content Include="Css\animate.min.css" />
     <Content Include="Css\bootstrap-datetimepicker.css" />
     <Content Include="Css\common_popup.css" />
+    <Content Include="Css\Publish.css" />
     <Content Include="Css\style.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Css\bootstrap-table.min.css" />
@@ -147,6 +149,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Home\TestPage.cshtml" />
     <None Include="Views\Tmpl\UserTmpl.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
