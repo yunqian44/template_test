@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestPage</title>
+    <link href="~/Css/Publish.css" rel="stylesheet" />
+    <script src="~/Script/jquery.min.js"></script>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <input type="button" onclick="qqq()" value="弹出" />
+    <input type="button" onclick="www()" value="关闭" />
+    <div id="apply" style="display:none;height:100px">
+        <input type="button" onclick="www()" value="关闭" />
+    </div>
+</body>
+<script type="text/javascript">
+    $(function () {
+
+    });
+
+    var ctrl = {
+        show: function (classname) {
+            $("#" + classname).show().removeClass("action-end").addClass("action-sta");
+            $('body').append("<div class='cover'></div>");
+        },
+        close: function (classname) {
+            $("#" + classname).show().removeClass("action-sta").addClass("action-end");
+            $(".cover").remove();
+        }
+    }
+
+    var qqq = function () {
+        ctrl.show("apply");
+    }
+
+    var www = function () {
+        ctrl.close("apply");
+    }
+
+    var rrr = function () {
+        alert("ass");
+    }
+</script>
+</html>
