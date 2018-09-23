@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YQ.TMPL.MVC.ViewModel", "YQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YQ.TMPL.MVC.Data", "YQ.TMPL.MVC.Data\YQ.TMPL.MVC.Data.csproj", "{51E069B4-48B8-487A-B5E8-5CAC89E9B803}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YQ.TMPL.MVC.UnitTest", "YQ.TMPL.MVC.UnitTest\YQ.TMPL.MVC.UnitTest.csproj", "{54B0F757-A078-47B7-B31F-670910B45E55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YQ.TMPL.MVC.Common", "YQ.TMPL.MVC.Common\YQ.TMPL.MVC.Common.csproj", "{3002AD4E-CF49-41DD-8AD7-6545F5C0B2B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{51E069B4-48B8-487A-B5E8-5CAC89E9B803}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51E069B4-48B8-487A-B5E8-5CAC89E9B803}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51E069B4-48B8-487A-B5E8-5CAC89E9B803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54B0F757-A078-47B7-B31F-670910B45E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54B0F757-A078-47B7-B31F-670910B45E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54B0F757-A078-47B7-B31F-670910B45E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54B0F757-A078-47B7-B31F-670910B45E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3002AD4E-CF49-41DD-8AD7-6545F5C0B2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3002AD4E-CF49-41DD-8AD7-6545F5C0B2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3002AD4E-CF49-41DD-8AD7-6545F5C0B2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3002AD4E-CF49-41DD-8AD7-6545F5C0B2B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

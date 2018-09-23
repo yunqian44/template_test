@@ -50,7 +50,7 @@
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
             </button>
         </div>
-        
+
         <table id="tb_departments"></table>
 
         <!-- 人员信息编辑 -->
@@ -477,10 +477,32 @@
         </ul>
     </script>
 
-    
+    <script type="text/html" id="temp2">
+        <div>
+            <ul>
+                {{each contents}}
+                <li>{{$value.content}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </script>
 
-        <script type="text/javascript">
+    <script type="text/html" id="temp1">
+        {{each list}}
+        <div>
+            <h2>{{$value.title}}</h2>
+            {{include 'temp2' $value.a}}
+        </div>
+        {{/each}}
+    </script>
+
+
+
+
+    <script type="text/javascript">
         $(function () {
+            Init();
+            
             //1.初始化Table
             var oTable = new TableInit();
             oTable.Init();
@@ -489,6 +511,36 @@
             var oButtonInit = new ButtonInit();
             oButtonInit.Init();
         });
+
+        var Init = function () {
+            var data = {
+                list: [
+                    {
+                        title: "这是一个测试标题1",
+                        a: {
+                            contents: [
+                                { "content": "这是一段内容1" },
+                                { "content": "这是一段内容1" },
+                                { "content": "这是一段内容1" }
+                            ]
+                        }
+                    },
+                    {
+                        title: "这是一个测试标题2",
+                        a: {
+                            contents: [
+                                { "content": "这是一段内容2" },
+                                { "content": "这是一段内容2" },
+                                { "content": "这是一段内容2" }
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            var html = template('temp1', data);
+            $("#main").html(html);
+        }
 
 
         var TableInit = function () {
@@ -669,6 +721,6 @@
 
             return oInit;
         };
-        </script>
+    </script>
 </body>
 </html>
